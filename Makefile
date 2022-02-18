@@ -6,7 +6,7 @@
 #    By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 18:18:35 by vnilprap          #+#    #+#              #
-#    Updated: 2022/02/17 20:43:21 by vnilprap         ###   ########.fr        #
+#    Updated: 2022/02/18 21:56:12 by vnilprap         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJS = ${SRCS:.c=.o}
 
 RM = rm -f
 
-all: ${NAME}
+all: ${NAME} clean
 
 ${NAME}: .c.o
 	ar rcs ${NAME} ${OBJS}
@@ -35,7 +35,7 @@ ${NAME}: .c.o
 comply:
 	${CC} ${CFLAGS} main.c ${NAME} -o test
 
-test:
+test: comply
 	./test
 
 clean:

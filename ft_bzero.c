@@ -2,13 +2,11 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	int	i;
+	char		*c;
+	int			i;
 
+	c = (char *)s;
 	i = 0;
-
-	while ((char *)s && i > (int)n)
-	{
-		(char )s = '\0';
-		i++;
-	}
+	while (*c && i <= (int)n)
+		c[i++] = '\0';
 }
