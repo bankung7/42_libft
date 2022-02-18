@@ -1,6 +1,8 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <time.h>
 #include "libft.h"
 
 int	main(void)
@@ -27,10 +29,24 @@ int	main(void)
 		c++;
 	}
 
-	char	*s = "this is test how many to count (35)\n";
-	int	number = 126;
-	char	*num = "\0";
+	char	*s0 = "\0";
+	char	*s1 = " ";
+	char	*s2 = "abcdefghijklmnopqrstuvwxyz\n";
 
-	printf("strlen : total num is : %lu and ft_strlen is : %d\n", strlen(s), ft_strlen(s));
-	printf("%s\n", strchr(num, number));
+	printf("strlen : total num is : %lu and ft_strlen is : %d\n", strlen(s0), ft_strlen(s0));
+	printf("strlen : total num is : %lu and ft_strlen is : %d\n", strlen(s1), ft_strlen(s1));
+	printf("strlen : total num is : %lu and ft_strlen is : %d\n", strlen(s2), ft_strlen(s2));
+
+	srand(time(NULL));
+	char memset1[50];
+	char memset2[50];
+	strcpy(memset1, s2);
+	strcpy(memset2, s2);
+	int ran = rand() % 30;
+	printf("memset : %s\n", memset(memset1, '%', ran));
+	printf("ft_memset : %s\n", ft_memset(memset2, '%', ran));
+	bzero(memset1, 3);
+	ft_bzero(memset2, 3);
+	printf("bzero : %s\n", memset1);
+	printf("ft_bzero : %s\n", memset2);
 }

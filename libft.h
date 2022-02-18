@@ -6,7 +6,7 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:16:23 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/02/17 21:06:48 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/02/18 11:47:03 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ int	ft_isprint(int c);
 int	ft_toupper(int c);
 int	ft_tolower(int c);
 int	ft_strlen(char *c);
+void	*ft_memset(void *b, int c, size_t len);
+void	*ft_bzero(void *s, size_t n);
 
 #endif
