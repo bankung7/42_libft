@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 23:28:04 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/02/26 21:34:31 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/02/27 10:06:55 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/02/27 10:49:42 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char		*cb;
 	size_t		i;
+	void	*buf;
 
-	cb = (char *)b;
 	i = 0;
+	buf = 0;
 	while (i < len)
-		cb[i++] = c;
-	return (cb);
+	{
+		*(char *)(buf + i) = *(char *)(src + i);
+		i++;
+	}
+	dst = buf;
+	return (dst);
 }

@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 23:28:04 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/02/26 21:34:31 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/02/23 15:20:17 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/02/23 16:31:58 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-void	*ft_memset(void *b, int c, size_t len)
+char	*ft_strchr(const char *s, int c)
 {
-	char		*cb;
-	size_t		i;
-
-	cb = (char *)b;
-	i = 0;
-	while (i < len)
-		cb[i++] = c;
-	return (cb);
+	while (*s && *s != c)
+		s++;
+	if (*s == c)
+		return ((char *)s);
+	return (0);
 }
