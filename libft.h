@@ -6,7 +6,7 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:16:23 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/02/28 17:26:36 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/01 08:05:52 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -31,5 +31,6 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int	ft_atoi(const char *str);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 #endif
