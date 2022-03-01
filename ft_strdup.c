@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 07:56:59 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/01 21:41:18 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/01 21:59:21 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/01 22:07:19 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+char	*ft_strdup(const char *s1)
 {
+	char	*ptr;
 	size_t	len;
-	size_t	j;
 
-	len = (size_t)ft_strlen(dst);
-	j = 0;
-	if (len < dstsize - 1 && dstsize > 0)
-	{
-		while (src[j] && len < dstsize - j - 1)
-		{
-			dst[j + len] = src[j];
-			j++;
-		}
-		dst[j + len] = 0;
-	}
-	if (len >= dstsize)
-		len = dstsize;
-	return (len + (size_t)ft_strlen((char *)src));
+	len = ft_strlen((char *)s1);
+	ptr = malloc(len + 1);
+	if (!ptr)
+		return (0);
+	ft_strlcpy(ptr, s1, len + 1);
+	return (ptr);
 }

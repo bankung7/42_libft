@@ -13,11 +13,10 @@ void	ft_print(char *c, int i)
 
 int	main(void)
 {
-	char dest[15];
-
-	memset(dest, 0, 15);
-	memset(dest, 'a', 6);
-
-	printf("%lu\n", strlcat(dest, "lorem ipsum", 15));
-	printf("%s\n", dest);
+	printf("%d\n", memcmp("-128", "-128", 4));
+	printf("%d\n", ft_memcmp("-128", "-128", 4));
+	printf("%d\n", memcmp("0", "0", 4));
+	printf("%d\n", ft_memcmp("0", "0", 4));
+	printf("%d\n", memcmp("127", "120", 4));
+	printf("%d\n", ft_memcmp("127", "120", 4));
 }

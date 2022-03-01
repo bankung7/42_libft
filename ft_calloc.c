@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 07:56:59 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/01 21:41:18 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/01 21:42:00 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/01 21:57:25 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	len;
-	size_t	j;
+	size_t	total;
+	char	*ptr;
 
-	len = (size_t)ft_strlen(dst);
-	j = 0;
-	if (len < dstsize - 1 && dstsize > 0)
-	{
-		while (src[j] && len < dstsize - j - 1)
-		{
-			dst[j + len] = src[j];
-			j++;
-		}
-		dst[j + len] = 0;
-	}
-	if (len >= dstsize)
-		len = dstsize;
-	return (len + (size_t)ft_strlen((char *)src));
+	total = count * size;
+	ptr = malloc(total);
+	if (!ptr)
+		return (0);
+	ft_bzero(ptr, total);
+	return (ptr);
 }

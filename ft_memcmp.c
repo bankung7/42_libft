@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 07:56:59 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/01 21:41:18 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/01 22:09:12 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/01 22:24:37 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	len;
-	size_t	j;
+	size_t	i;
 
-	len = (size_t)ft_strlen(dst);
-	j = 0;
-	if (len < dstsize - 1 && dstsize > 0)
+	i = 0;
+	while (i < n)
 	{
-		while (src[j] && len < dstsize - j - 1)
-		{
-			dst[j + len] = src[j];
-			j++;
-		}
-		dst[j + len] = 0;
+		if ((unsigned char *)(s1 + i) - (unsigned char *)(s2 + i) != 0)
+			return ((unsigned char *)(s1 + i) - (unsigned char *)(s2 + i));
+		i++;
 	}
-	if (len >= dstsize)
-		len = dstsize;
-	return (len + (size_t)ft_strlen((char *)src));
+	return (0);
 }
+

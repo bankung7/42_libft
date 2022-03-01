@@ -6,10 +6,10 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:16:23 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/01 08:05:52 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/01 22:21:03 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+#include <stdlib.h>
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -23,6 +23,7 @@ int	ft_toupper(int c);
 int	ft_tolower(int c);
 int	ft_strlen(char *c);
 void	*ft_memset(void *b, int c, size_t len);
+int	ft_memcmp(const void *s1, const void *s2, size_t n);
 void	ft_bzero(void *s, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
@@ -32,5 +33,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int	ft_atoi(const char *str);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strdup(const char *s1);
 
 #endif
