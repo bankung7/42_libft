@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 10:06:55 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/02 21:18:47 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/03 16:25:42 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/03 21:33:41 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
+	char	*ptr;
 
+	if (!(*s))
+		return (0);
+	if (start > ft_strlen((char *)s))
+		return (ft_strdup(""));
+	if (len + start > ft_strlen((char *)s))
+		len = ft_strlen((char *)s) - start;
+	ptr = malloc(sizeof(char) * (len + 1));
+	if (!ptr)
+		return (0);
 	i = 0;
-	if (src < dst)
-	{
-		while (len--)
-			*(char *)(dst + len) = *(char *)(src + len);
-		return (dst);
-	}
 	while (i < len)
 	{
-		*(char *)(dst + i) = *(char *)(src + i);
+		ptr[i] = *(s + ((size_t)start + i));
 		i++;
 	}
-	return (dst);
+	ptr[i] = 0;
+	return (ptr);
 }

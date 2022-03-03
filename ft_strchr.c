@@ -6,15 +6,20 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:20:17 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/02/23 16:31:58 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/02 21:43:27 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s && *s != c)
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
 		s++;
-	if (*s == c)
+	}
+	if (c == 0)
 		return ((char *)s);
 	return (0);
 }

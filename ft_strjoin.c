@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 10:06:55 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/02 21:18:47 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/03 21:33:48 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/03 22:10:41 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	size_t	len1;
+	size_t	len2;
 	size_t	i;
+	char	*ptr;
 
+	len1 = ft_strlen((char *)s1);
+	len2 = ft_strlen((char *)s2);
 	i = 0;
-	if (src < dst)
+	ptr = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!ptr)
+		return (0);
+	while (i < len1)
 	{
-		while (len--)
-			*(char *)(dst + len) = *(char *)(src + len);
-		return (dst);
-	}
-	while (i < len)
-	{
-		*(char *)(dst + i) = *(char *)(src + i);
+		ptr[i] = s1[i];
 		i++;
 	}
-	return (dst);
+	i = 0;
+	while (i < len2)
+	{
+		ptr[len1 + i] = s2[i];
+		i++;
+	}
+	ptr[len1 + i] = '\0';
+	return (ptr);
 }
