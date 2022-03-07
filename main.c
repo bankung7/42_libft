@@ -7,28 +7,7 @@
 
 int	main(void)
 {
-	t_list	**n;
-	t_list	*p;
+	char *s1 = "  \t \t \n   \n\n\n\t";
 
-	p = malloc(sizeof(t_list));
-	p->content = "1";
-	p->next = 0;
-
-	*n = p;
-	p = malloc(sizeof(t_list));
-	p->content = "2";
-	p->next = 0;
-
-	(*n)->next = p;
-
-	p = malloc(sizeof(t_list));
-	p->content = "3";
-	p->next = 0;
-
-
-	while (n)
-	{
-		printf("%s\n", (char *)(&(*n)->content));
-		n = &(*n)->next;
-	}
+	printf("%s\n", ft_strtrim(s1, " \n\t"));
 }
