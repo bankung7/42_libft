@@ -6,7 +6,7 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 10:44:54 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/06 10:42:16 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/07 15:23:14 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -32,7 +32,7 @@ int	ft_cstsplit(char const *s, char c)
 
 char	**ft_free(char **str, int n)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (i <= n)
@@ -57,15 +57,11 @@ char	**ft_split(char const *s, char c)
 	while (s[i])
 	{
 		if (s[i] != c && s[i + 1] == 0)
-		{
-			if ((ptr[index++] = ft_substr(s, len, i - len + 1)) == 0)
-				return (ft_free(ptr, ft_cstsplit(s, c)));
-		}
+			ptr[index++] = ft_substr(s, len, i - len + 1);
 		else if (s[i] == c && s[i - 1] != c && i != 0)
-		{
-			if ((ptr[index++] = ft_substr(s, len, i - len)) == 0)
-				return (ft_free(ptr, ft_cstsplit(s , c)));
-		}
+			ptr[index++] = ft_substr(s, len, i - len);
+		if (index > 0 && ptr[index - 1] == 0)
+			return (ft_free(ptr, ft_cstsplit(s, c) + 1));
 		if (s[i] == c)
 			len = i + 1;
 		i++;
