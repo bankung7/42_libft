@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 16:25:42 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/06 09:19:54 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/04 08:07:25 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/06 08:50:35 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
+	size_t	len;
 	char	*ptr;
 
-	if (!(*s))
-		return (0);
-	if (start > ft_strlen((char *)s))
-		return (ft_strdup(""));
-	if (len + start > ft_strlen((char *)s))
-		len = ft_strlen((char *)s) - start;
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	i = 0;
+	len = ft_strlen((char *)s1) - 1;
+	while (s1[i] && ft_strchr(set, s1[i]) != 0)
+		i++;
+	while (len > 0 && ft_strchr(set, s1[len]) != 0)
+		len--;
+	if (i > len || s1[0] == 0)
+	{
+		ptr = malloc(sizeof(char) * 1);
+		if (!ptr)
+			return (0);
+		ptr[0] = 0;
+		return (ptr);
+	}
+	ptr = malloc(sizeof(char) * (len - i + 2));
 	if (!ptr)
 		return (0);
-	i = 0;
-	while (i < len)
-	{
-		ptr[i] = *(s + ((size_t)start + i));
-		i++;
-	}
-	ptr[i] = 0;
+	ptr = ft_substr(s1, i, len - i + 1);
 	return (ptr);
 }

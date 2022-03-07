@@ -1,34 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 10:06:55 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/04 13:44:25 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/05 22:00:57 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/06 08:17:26 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_printnbr(int n, int fd)
 {
-	size_t	i;
+	char	m;
+
+	if (n > 0)
+	{
+		m = (n % 10) + '0';
+		ft_printnbr(n / 10, fd);
+		write(fd, &m, 1);
+	}
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	int	i;
+	int	isneg;
 
 	i = 0;
-	if (!dst && !src)
-		return (0);
-	if (src < dst)
+	isneg = 0;
+	if (n == 0)
 	{
-		while (len--)
-			*(char *)(dst + len) = *(char *)(src + len);
-		return (dst);
+		write(fd, "0", 1);
+		return ((void) NULL);
 	}
-	while (i < len)
+	if (n == -2147483648)
 	{
-		*(char *)(dst + i) = *(char *)(src + i);
-		i++;
+		n /= -10;
+		isneg = 2;
 	}
-	return (dst);
+	if (n < 0)
+	{
+		n *= -1;
+		isneg = 1;
+	}
+	if (isneg > 0)
+		write(fd, "-", 1);
+	ft_printnbr(n, fd);
+	if (isneg == 2)
+		write(fd, "8", 1);
 }
