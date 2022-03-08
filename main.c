@@ -5,15 +5,27 @@
 #include <time.h>
 #include "libft.h"
 
+void	ft_print(char const *s)
+{
+	int	len;
+	len = 0;
+
+	while (s[len])
+		len++;
+	write(1,s,len);
+}
+
+
 int	main(void)
 {
-	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-	printf("%s\n", ft_strtrim(s1, " \n\t"));
-	char *s2 = "Hello";
-	printf("%s\n", ft_strtrim(s2, " \n\t"));
-	char *s3 = " \n\t\t  \t\n \n \n\n\t\t";
-	printf("%s\n", ft_strtrim(s3, " \n\t"));
-	char *s4 = "  \t \t \n   \n\n\n\t";
-	printf("%s\n", ft_strtrim(s4, " \n\t"));
+	char **str = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ",' ');
+	int	i;
 
+	i=0;
+	while (str[i] != 0)
+	{
+		ft_print(str[i]);
+		i++;
+		write(1, "\n", 1);
+	}
 }

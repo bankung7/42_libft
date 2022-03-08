@@ -6,13 +6,12 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 10:44:54 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/07 15:23:14 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:55:53 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
 
-int	ft_cstsplit(char const *s, char c)
+static	int	ft_cstsplit(char const *s, char c)
 {
 	int	i;
 	int	len;
@@ -23,48 +22,67 @@ int	ft_cstsplit(char const *s, char c)
 	{
 		if (s[i] == c && s[i - 1] != c && i != 0)
 			len++;
-		else if (s[i] != c && s[i + 1] == 0)
+		if (s[i] != c && s[i + 1] == 0)
 			len++;
 		i++;
 	}
 	return (len);
 }
 
-char	**ft_free(char **str, int n)
+static	char	**ft_free(char **str)
 {
 	int		i;
 
 	i = 0;
-	while (i <= n)
+	while (str[i])
 		free(str[i++]);
 	free(str);
 	return (0);
 }
 
-char	**ft_split(char const *s, char c)
+static	char	**ft_spliter(char const *s, char c)
 {
-	int		index;
 	int		i;
+	int		len;
+	int		index;
 	char	**ptr;
-	size_t	len;
 
 	i = 0;
-	index = 0;
 	len = 0;
-	ptr = ft_calloc(sizeof(char *), ft_cstsplit(s, c) + 1);
+	index = 0;
+	ptr = malloc(sizeof(char *) * (ft_cstsplit(s, c) + 1));
 	if (!ptr)
 		return (0);
 	while (s[i])
 	{
 		if (s[i] != c && s[i + 1] == 0)
 			ptr[index++] = ft_substr(s, len, i - len + 1);
-		else if (s[i] == c && s[i - 1] != c && i != 0)
+		if (s[i] == c && s[i - 1] != c && i != 0)
 			ptr[index++] = ft_substr(s, len, i - len);
 		if (index > 0 && ptr[index - 1] == 0)
-			return (ft_free(ptr, ft_cstsplit(s, c) + 1));
+			return (ft_free(ptr));
 		if (s[i] == c)
 			len = i + 1;
 		i++;
 	}
+	ptr[index] = 0;
+	return (ptr);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**ptr;
+
+	if (!s)
+	{
+		ptr = malloc(sizeof(char *));
+		if (!ptr)
+			return (0);
+		*ptr = 0;
+		return (ptr);
+	}
+	ptr = ft_spliter(s, c);
+	if (!ptr)
+		return (0);
 	return (ptr);
 }

@@ -6,13 +6,8 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 17:29:40 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/07 18:52:23 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:36:25 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-{
-	lst = 0;
-	f(ft_lstadd_back(lst));
-}

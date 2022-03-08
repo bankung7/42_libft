@@ -6,11 +6,10 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 08:07:25 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/07 14:58:53 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:46:59 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
 
 int	ft_issetchar(char const *s, char const *set)
 {
