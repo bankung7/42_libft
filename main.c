@@ -18,14 +18,7 @@ void	ft_print(char const *s)
 
 int	main(void)
 {
-	char **str = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ",' ');
-	int	i;
+	char	*str = ft_strtrim("","123");
 
-	i=0;
-	while (str[i] != 0)
-	{
-		ft_print(str[i]);
-		i++;
-		write(1, "\n", 1);
-	}
+	printf("%s\n", str);
 }

@@ -6,7 +6,7 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 08:07:25 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/07 21:46:59 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/09 16:46:23 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -50,14 +50,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*ptr;
 
 	i = 0;
-	if (!s1 || !set)
-		return (0);
 	len = ft_issetcharr(s1, set) - ft_issetchar(s1, set) + 1;
-	if (len <= 0)
+	if (!s1 || !set || len <= 0)
 	{
-		ptr = ft_calloc(sizeof(char), 1);
+		ptr = (char *)malloc(sizeof(char));
 		if (!ptr)
 			return (0);
+		ptr = 0;
 		return (ptr);
 	}
 	ptr = malloc(sizeof(char) * len + 1);

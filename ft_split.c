@@ -6,7 +6,7 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 10:44:54 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/08 21:55:53 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/09 14:56:45 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -52,7 +52,7 @@ static	char	**ft_spliter(char const *s, char c)
 	index = 0;
 	ptr = malloc(sizeof(char *) * (ft_cstsplit(s, c) + 1));
 	if (!ptr)
-		return (0);
+		return (ft_free(ptr));
 	while (s[i])
 	{
 		if (s[i] != c && s[i + 1] == 0)
@@ -75,7 +75,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 	{
-		ptr = malloc(sizeof(char *));
+		ptr = (char **)malloc(sizeof(char *));
 		if (!ptr)
 			return (0);
 		*ptr = 0;
