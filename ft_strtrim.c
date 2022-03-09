@@ -6,67 +6,46 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 08:07:25 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/09 16:46:23 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/09 22:23:16 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_issetchar(char const *s, char const *set)
+static	int	ft_cchar(char c, char const *set)
 {
 	int	i;
-	int	out;
 
 	i = 0;
-	out = 0;
-	while (s[i])
+	while (set[i])
 	{
-		if (ft_strchr(set, s[i++]))
-			out++;
+		if (set[i] == c)
+			return (0);
 		else
-			return (out);
+			i++;
 	}
-	return (out);
-}
-
-int	ft_issetcharr(char const *s, char const *set)
-{
-	int	len;
-
-	len = ft_strlen((char *)s) - 1;
-	while (len > 0)
-	{
-		if (ft_strchr(set, s[len]))
-			len--;
-		else
-			return (len);
-	}
-	return (0);
+	return (i);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		len;
+	int		start;
+	int		end;
 	int		i;
-	char	*ptr;
+	char	*p;
 
-	i = 0;
-	len = ft_issetcharr(s1, set) - ft_issetchar(s1, set) + 1;
-	if (!s1 || !set || len <= 0)
-	{
-		ptr = (char *)malloc(sizeof(char));
-		if (!ptr)
-			return (0);
-		ptr = 0;
-		return (ptr);
-	}
-	ptr = malloc(sizeof(char) * len + 1);
-	if (!ptr)
+	start = 0;
+	end = ft_strlen((char *)s1) - 1;
+	if (!s1)
 		return (0);
-	while (i < len)
-	{
-		ptr[i] = s1[ft_issetchar(s1, set) + i];
-		i++;
-	}
-	ptr[i] = 0;
-	return (ptr);
+	if (!set || ft_strlen((char *)set) == 0)
+		return (ft_strdup(s1));
+	while (s1[start] && ft_cchar(s1[start], set) == 0)
+		start++;
+	while (end >= 0 && ft_cchar(s1[end], set) == 0)
+		end--;
+	if (start > end)
+		return (ft_calloc(sizeof(char), 1));
+	i = end - start + 1;
+	p = ft_substr(s1, start, i);
+	return (p);
 }

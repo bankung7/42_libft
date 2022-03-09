@@ -18,7 +18,8 @@ void	ft_print(char const *s)
 
 int	main(void)
 {
-	char	*str = ft_strtrim("","123");
+	char	*str = ft_strtrim("123", "");
 
 	printf("%s\n", str);
+	free(str);
 }
