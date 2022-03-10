@@ -6,16 +6,18 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 23:28:28 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/07 18:50:33 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/10 08:40:36 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlen(char *c)
+size_t	ft_strlen(const char *c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
+	if (!c)
+		return (0);
 	while (c[i])
 		i++;
 	return (i);

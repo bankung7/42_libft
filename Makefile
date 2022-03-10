@@ -6,7 +6,7 @@
 #    By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 18:18:35 by vnilprap          #+#    #+#              #
-#    Updated: 2022/03/07 21:48:34 by vnilprap         ###   ########.fr        #
+#    Updated: 2022/03/10 08:19:30 by vnilprap         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror
 
 OBJS = ${SRCS:.c=.o}
 
@@ -36,17 +36,11 @@ RM = rm -f
 
 all: ${NAME}
 
-${NAME}: .c.o
+${NAME}: ${OBJS}
 	ar rcs ${NAME} ${OBJS}
 
-bonus: .c.o_bonus
+bonus: ${OBJS_BONUS}
 	ar rcs ${NAME} ${OBJS_BONUS}
-
-.c.o: ${OBJS}
-	${CC} ${CFLAGS} ${SRCS} -c
-
-.c.o_bonus: ${OBJS_BONUS}
-	${CC} ${CFLAGS} ${SRCS_BONUS} -c
 
 comply:
 	${CC} ${CFLAGS} main.c ${NAME} -o test
@@ -55,7 +49,7 @@ t: comply
 	./test
 
 clean:
-	${RM} ${wildcard ft*.o}
+	${RM} ${OBJS} ${OBJS_BONUS}
 
 fclean: clean
 	${RM} ${NAME} test

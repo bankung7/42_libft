@@ -6,7 +6,7 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 17:29:40 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/09 20:53:32 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/10 07:46:40 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -30,7 +30,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		{
 			ft_lstclear(&head, del);
 			return (0);
-
 		}
 		n = n->next;
 		lst = lst->next;
