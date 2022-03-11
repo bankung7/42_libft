@@ -18,5 +18,7 @@ void	ft_print(char const *s)
 
 int	main(void)
 {
+	char *s = 0;
+	printf("%s\n", ft_memchr(s, 's', 3));
 	return (0);
 }
