@@ -5,19 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 17:21:42 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/07 17:29:32 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/11 16:43:13 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/11 16:47:37 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (!lst || !f)
-		return ((void)0);
-	while (lst)
+	if (lst)
 	{
-		(*f)(lst->content);
-		lst = lst->next;
+		while (lst)
+		{
+			(*f)(lst->content);
+			lst = lst->next;
+		}
 	}
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 12:31:50 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/06 19:03:37 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/11 16:10:20 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/11 16:13:24 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,12 +16,10 @@ int	ft_lstsize(t_list *lst)
 	int	i;
 
 	i = 0;
-	if (lst == 0)
-		return (0);
 	while (lst)
 	{
-		lst = lst->next;
 		i++;
+		lst = lst->next;
 	}
 	return (i);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 10:43:56 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/06 10:47:39 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/11 15:53:05 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/11 15:59:33 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,7 +15,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*n;
 
-	n = (t_list *)malloc(sizeof(t_list));
+	n = malloc(sizeof(t_list));
 	if (!n)
 		return (0);
 	n->content = content;

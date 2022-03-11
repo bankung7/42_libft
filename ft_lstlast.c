@@ -5,19 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 19:04:42 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/06 21:41:40 by vnilprap         ###   ########.fr       */
+/*   Created: 2022/03/11 16:13:38 by vnilprap          #+#    #+#             */
+/*   Updated: 2022/03/11 17:19:28 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst)
-	{
-		if (!lst->next)
-			return (lst);
-		lst = lst->next;
-	}
-	return (0);
+	t_list	*n;
+
+	if (!lst)
+		return (0);
+	n = lst;
+	while (n->next)
+		n = n->next;
+	return (n);
 }

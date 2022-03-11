@@ -18,14 +18,5 @@ void	ft_print(char const *s)
 
 int	main(void)
 {
-	char	**str = ft_split(" 123 ", ' ');
-
-	int	i = 0;
-	while (str[i])
-		printf("%s\n", str[i++]);
-
-	i = 0;
-	while (str[i])
-		free(str[i++]);
-	free(str);
+	return (0);
 }
