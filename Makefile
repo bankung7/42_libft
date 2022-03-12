@@ -6,7 +6,7 @@
 #    By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 18:18:35 by vnilprap          #+#    #+#              #
-#    Updated: 2022/03/12 20:26:04 by vnilprap         ###   ########.fr        #
+#    Updated: 2022/03/12 20:28:54 by vnilprap         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,32 +28,32 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-OBJS = ${SRCS:.c=.o}
+OBJS = $(SRCS:.c=.o)
 
-OBJS_BONUS = ${SRCS_BONUS:.c=.o}
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 RM = rm -f
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${OBJS}
-	ar rcs ${NAME} ${OBJS}
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
-bonus: ${OBJS} ${OBJS_BONUS}
-	ar rcs ${NAME} ${OBJS} ${OBJS_BONUS}
+bonus: $(OBJS) $(OBJS_BONUS)
+	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 
 comply:
-	${CC} ${CFLAGS} main.c ${NAME} -o test
+	$(CC) $(CFLAGS) main.c $(NAME) -o test
 
 t: comply
-	${RM} main.o 
+	$(RM) main.o 
 	./test
 
 clean:
-	${RM} ${OBJS} ${OBJS_BONUS}
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-	${RM} ${NAME} test
+	$(RM) $(NAME) test
 
 re: fclean all
 
