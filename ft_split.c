@@ -6,7 +6,7 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 10:44:54 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/11 13:37:37 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/12 17:19:53 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -20,8 +20,9 @@ static	int	ft_cstsplit(char const *s, char c)
 	len = 0;
 	while (s[i])
 	{
-		if (s[i] == c && s[i - 1] != c && i != 0)
-			len++;
+		if (i > 0)
+			if (s[i] == c && s[i - 1] != c)
+				len++;
 		if (s[i] != c && s[i + 1] == 0)
 			len++;
 		i++;
@@ -51,22 +52,22 @@ static	char	**ft_spliter(char const *s, char c)
 	i = 0;
 	len = 0;
 	index = 0;
-	ptr = malloc(sizeof(char *) * ft_cstsplit(s, c));
+	ptr = ft_calloc(sizeof(char *), ft_cstsplit(s, c));
 	if (!ptr)
 		return (0);
 	while (s[i])
 	{
 		if (s[i] != c && s[i + 1] == 0)
 			ptr[index++] = ft_substr(s, len, i - len + 1);
-		if (s[i] == c && s[i - 1] != c && i != 0)
-			ptr[index++] = ft_substr(s, len, i - len);
+		if (i > 0)
+			if (s[i] == c && s[i - 1] != c)
+				ptr[index++] = ft_substr(s, len, i - len);
 		if (index > 0 && ptr[index - 1] == 0)
 			return (ft_free(ptr));
 		if (s[i] == c)
 			len = i + 1;
 		i++;
 	}
-	ptr[index] = NULL;
 	return (ptr);
 }
 

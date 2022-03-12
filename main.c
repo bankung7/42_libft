@@ -18,7 +18,8 @@ void	ft_print(char const *s)
 
 int	main(void)
 {
-	char *s = 0;
-	printf("%s\n", ft_memchr(s, 's', 3));
+	char *s1 = "Golf";
+	char *s2 = " Eye";
+	printf("%s\n", ft_strjoin(s1, s2));
 	return (0);
 }
