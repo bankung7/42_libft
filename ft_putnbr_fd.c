@@ -6,12 +6,12 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 22:00:57 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/06 08:17:26 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:16:12 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_printnbr(int n, int fd)
+static	void	ft_printnbr(int n, int fd)
 {
 	char	m;
 
@@ -33,7 +33,7 @@ void	ft_putnbr_fd(int n, int fd)
 	if (n == 0)
 	{
 		write(fd, "0", 1);
-		return ((void) NULL);
+		return ((void)0);
 	}
 	if (n == -2147483648)
 	{

@@ -6,7 +6,7 @@
 #    By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 18:18:35 by vnilprap          #+#    #+#              #
-#    Updated: 2022/03/11 18:05:02 by vnilprap         ###   ########.fr        #
+#    Updated: 2022/03/12 20:26:04 by vnilprap         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,8 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	ar rcs ${NAME} ${OBJS}
 
-bonus: ${OBJS_BONUS}
-	ar rcs ${NAME} ${OBJS_BONUS}
+bonus: ${OBJS} ${OBJS_BONUS}
+	ar rcs ${NAME} ${OBJS} ${OBJS_BONUS}
 
 comply:
 	${CC} ${CFLAGS} main.c ${NAME} -o test

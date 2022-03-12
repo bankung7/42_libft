@@ -4,4 +4,5 @@ libft-unit-tests
 libft-unit-tests/*
 Libftest
 Libftest/*
-test.dSYM
+test.dSYM/
+test.dSYM/*

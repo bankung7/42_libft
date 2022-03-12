@@ -6,12 +6,12 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 15:04:38 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/04 16:59:19 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:17:36 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_count(unsigned int n)
+static	int	ft_count(unsigned int n)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	ft_count(unsigned int n)
 	return (i);
 }
 
-int	ft_isneg(int n)
+static	int	ft_isneg(int n)
 {
 	if (n < 0)
 		return (1);
@@ -54,7 +54,8 @@ char	*ft_itoa(int n)
 		ptr[0] = '0';
 	while (nn > 0)
 	{
-		ptr[len-- + neg - 1] = (nn % 10) + '0';
+		ptr[len + neg - 1] = (nn % 10) + '0';
+		len--;
 		nn /= 10;
 	}
 	return (ptr);

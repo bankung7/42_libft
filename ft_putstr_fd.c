@@ -6,7 +6,7 @@
 /*   By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 21:53:28 by vnilprap          #+#    #+#             */
-/*   Updated: 2022/03/06 07:34:55 by vnilprap         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:16:32 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,10 +16,11 @@ void	ft_putstr_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
-	if (s == 0)
-		return ((void)0);
-	while (s[i])
+	if (s)
 	{
-		write(fd, &s[i++], 1);
+		while (s[i])
+		{
+			write(fd, &s[i++], 1);
+		}
 	}
 }
