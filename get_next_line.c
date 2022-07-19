@@ -9,7 +9,7 @@
 /*   Updated: 2022/03/29 08:25:28 by vnilprap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "libft.h"
 
 static	int	ft_chknl(char *s)
 {

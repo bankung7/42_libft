@@ -6,3 +6,6 @@ Libftest
 Libftest/*
 test.dSYM/
 test.dSYM/*
+*.pdf
+*.o
+*.a
