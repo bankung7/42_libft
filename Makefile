@@ -37,12 +37,10 @@ OBJS_BONUS = $(SRCS_BONUS:%.c=$(O_DIR)%.o)
 
 RM = rm -rf
 
-all: $(MK_ODIR) $(NAME)
-
-$(MK_ODIR):
-	mkdir $(O_DIR)
+all: $(NAME)
 
 $(O_DIR)%.o: %.c
+	mkdir -p $(O_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
