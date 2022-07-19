@@ -6,7 +6,7 @@
 #    By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 18:18:35 by vnilprap          #+#    #+#              #
-#    Updated: 2022/03/12 20:28:54 by vnilprap         ###   ########.fr        #
+#    Updated: 2022/07/19 12:37:25 by vnilprap         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,13 +29,21 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-OBJS = $(SRCS:.c=.o)
+O_DIR = obj/
 
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+OBJS = $(SRCS:%.c=$(O_DIR)%.o)
 
-RM = rm -f
+OBJS_BONUS = $(SRCS_BONUS:%.c=$(O_DIR)%.o)
 
-all: $(NAME)
+RM = rm -rf
+
+all: $(MK_ODIR) $(NAME)
+
+$(MK_ODIR):
+	mkdir $(O_DIR)
+
+$(O_DIR)%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
@@ -51,11 +59,11 @@ t: comply
 	./test
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(OBJS) $(OBJS_BONUS) $(O_DIR)
 
 fclean: clean
 	$(RM) $(NAME) test
 
 re: fclean all
 
-.PHONY: all clean fclean comply ${NAME} t
+.PHONY: all clean fclean comply t
