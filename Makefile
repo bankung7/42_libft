@@ -6,7 +6,7 @@
 #    By: vnilprap <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 18:18:35 by vnilprap          #+#    #+#              #
-#    Updated: 2022/07/19 12:37:25 by vnilprap         ###   ########.fr        #
+#    Updated: 2022/07/19 12:52:36 by vnilprap         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,12 +36,10 @@ OBJS_BONUS = $(SRCS_BONUS:%.c=$(O_DIR)%.o)
 
 RM = rm -rf
 
-all: $(MK_ODIR) $(NAME)
-
-$(MK_ODIR):
-	mkdir $(O_DIR)
+all: $(NAME)
 
 $(O_DIR)%.o: %.c
+	mkdir -p $(O_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
