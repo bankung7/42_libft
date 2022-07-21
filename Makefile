@@ -21,42 +21,38 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
        ft_putendl_fd.c ft_putnbr_fd.c ft_striteri.c ft_strmapi.c \
 	   get_next_line.c
 
-SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 	     ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 	     ft_lstmap.c
+
+OBJS_DIR = obj/
+
+OBJS = $(addprefix $(OBJS_DIR),$(SRCS:.c=.o))
+OBJS_B = $(addprefix $(OBJS_DIR),$(SRCS_B:.c=.o))
 
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-O_DIR = obj/
-
-OBJS = $(SRCS:%.c=$(O_DIR)%.o)
-
-OBJS_BONUS = $(SRCS_BONUS:%.c=$(O_DIR)%.o)
-
 RM = rm -rf
 
 all: $(NAME)
 
-$(O_DIR)%.o: %.c
-	mkdir -p $(O_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+bonus: $(OBJS_B) $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $@ $^
+	@echo "Libft is ready"
 
-bonus: $(OBJS) $(OBJS_BONUS)
-	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
-
-comply:
-	$(CC) $(CFLAGS) main.c $(NAME) -o test
+$(OBJS_DIR)%.o: %.c
+	@mkdir -p $(OBJS_DIR)
+	@$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS) $(O_DIR)
+	@$(RM) $(OBJS_DIR)
 
 fclean: clean
-	$(RM) $(NAME) test
+	@$(RM) $(NAME) test
 
 re: fclean all
 
